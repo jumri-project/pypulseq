@@ -57,8 +57,8 @@ def make_extended_trapezoid_area(
     if max_slew is None:
         max_slew = system.max_slew
         
-    max_slew = system.max_slew * 0.99
-    max_grad = system.max_grad * 0.99
+    max_slew = max_slew * 0.99
+    max_grad = max_grad * 0.99
     raster_time = system.grad_raster_time
 
     def _to_raster(time: float) -> float:
