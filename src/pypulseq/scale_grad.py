@@ -28,6 +28,8 @@ def scale_grad(grad: SimpleNamespace, scale: float) -> SimpleNamespace:
         scaled_grad.waveform = scaled_grad.waveform * scale
         scaled_grad.first = scaled_grad.first * scale
         scaled_grad.last = scaled_grad.last * scale
+        if hasattr(scaled_grad, 'area'):
+            scaled_grad.area = scaled_grad.area * scale
 
     if hasattr(scaled_grad, 'id'):
         delattr(scaled_grad, 'id')
