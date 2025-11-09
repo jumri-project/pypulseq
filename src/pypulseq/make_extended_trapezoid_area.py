@@ -16,6 +16,8 @@ def make_extended_trapezoid_area(
     grad_start: float,
     grad_end: float,
     convert_to_arbitrary: bool = False,
+    max_grad: Union[float, None] = None,
+    max_slew: Union[float, None] = None,
     system: Union[Opts, None] = None,
 ) -> Tuple[SimpleNamespace, np.array, np.array]:
     """Make the shortest possible extended trapezoid for given area and gradient start and end point.
@@ -50,7 +52,11 @@ def make_extended_trapezoid_area(
     """
     if system is None:
         system = Opts.default
-
+    if max_grad is None:
+        max_grad = system.max_grad
+    if max_slew is None:
+        max_slew = system.max_slew
+        
     max_slew = system.max_slew * 0.99
     max_grad = system.max_grad * 0.99
     raster_time = system.grad_raster_time
